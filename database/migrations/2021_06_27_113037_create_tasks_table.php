@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->integer('project_id')->unsigned();
+            $table->integer('project_id');//->unsigned();
             $table->foreign('project_id')->references('id')->on('projects');
             $table->string('title');
             $table->integer('status')->default(0);
