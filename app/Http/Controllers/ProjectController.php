@@ -14,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return Project::all();
+        $projects = Project::all();
+        return view ('project.index', compact('projects'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view ('project.create');
     }
 
     /**
@@ -36,7 +37,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $project = Project::create($request->all());
-        return $project;
+        return redirect('project');
     }
 
     /**
@@ -48,7 +49,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        return $project;
+        return view('project.show', compact('project'));
     }
 
     /**
@@ -59,7 +60,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        return view('project.edit', compact('project'));
     }
 
     /**
@@ -71,9 +73,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $project = Project::find($id)->update($request->all());
-        return $project;
+        $project = Project::find($id);
+        $project -> update($request->all());
+        return redirect('project/');
     }
+    /* .$project -> id -- Add this to return redirect if you want redirection to Show.
 
     /**
      * Remove the specified resource from storage.
@@ -83,7 +87,7 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::find($id)->delete();
-        return $project;
+        Project::find($id)->delete();
+        return redirect('project');
     }
 }
