@@ -1,3 +1,6 @@
+@extends('layout')
+
+@section('content')
 <form action = "/task/ {{ $task -> id }}" method = "POST">
     @csrf
     @method('PUT')
@@ -26,3 +29,4 @@
     </div>
         <button type = "submit"> Save </button>
     </form>
+@endsection
