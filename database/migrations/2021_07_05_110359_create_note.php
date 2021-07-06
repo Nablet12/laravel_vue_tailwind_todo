@@ -15,8 +15,11 @@ class CreateNote extends Migration
     {
         Schema::create('note', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('content');
-            //$table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->boolean('important');
         });
     }
 

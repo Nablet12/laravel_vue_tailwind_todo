@@ -6,7 +6,19 @@
                 ID
             </th>
             <th>
+                Title
+            </th>
+            <th>
                 Content
+            </th>
+            <th>
+                Important
+            </th>
+            <th>
+                Created at
+            </th>
+            <th>
+                Updated at
             </th>
         </tr>
     </thead>
@@ -17,7 +29,19 @@
                 {{ $note -> id }}
             </td>
             <td>
+                {{ $note -> title }}
+            </td>
+            <td>
                 {{ $note -> content }}
+            </td>
+            <td>
+                {{ $note -> important }}
+            </td>
+            <td>
+                {{ $note -> created_at }}
+            </td>
+            <td>
+                {{ $note -> updated_at }}
             </td>
             <td>
                 <a href="/note/{{ $note->id }}">Show</a>

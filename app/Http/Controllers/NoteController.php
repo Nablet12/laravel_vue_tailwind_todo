@@ -13,7 +13,7 @@ class NoteController extends Controller
     }
 
     public function create() {
-        $notes = Note::select(['id', 'content'])->get();
+        $notes = Note::select(['id', 'title', 'content', 'created_at', 'updated_at', 'important'])->get();
         return view('note.create', compact('notes'));
     }
 
