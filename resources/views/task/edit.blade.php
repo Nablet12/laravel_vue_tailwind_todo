@@ -6,7 +6,8 @@
     @method('PUT')
     <div>
         <label for="title">Title</label>
-        <input type="text" value="{{ $task -> title }}" name ='title'>
+        <input type="text" value="{{ $task -> title }}" name ='title'
+        class = "rounded border border-gray-100 mr-1">
     </div>
     <div>
         <label for="project_id">Project</label>
@@ -27,6 +28,6 @@
             <option {{ $task -> status == '1'?'selected':'' }} value = "1">Done</option>
         </select>
     </div>
-        <button type = "submit"> Save </button>
+        <button class = "p-1 m-1 rounded border border-green-500 bg-green-100 text-green-800" type = "submit"> Save </button>
     </form>
 @endsection
