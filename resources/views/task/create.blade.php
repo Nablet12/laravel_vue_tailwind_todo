@@ -5,13 +5,16 @@
     @csrf
     <div>
         <label for="title"> Title </label>
-        <input type="text" name = "title"/>
+        <input type="text" name = "title"/
+        class = "rounded border border-gray-300 mr-1">
         <br>
         <label for="status"> Status </label>
-        <input type="text" name = "status"/>
+        <input type="text" name = "status"/
+        class = "rounded border border-gray-300 mr-1">
         <br>
         <label for="project_id"> Project ID </label>
-        <input type="text" name = "project_id"/>
+        <input type="text" name = "project_id"/
+        class = "rounded border border-gray-300 mr-1">
         <br>
     </div>
     <div>
@@ -23,6 +26,6 @@
             @endforeach
         </select>
     </div>
-        <button type = "submit"> Save </button>
+        <button class = "p-1 m-1 rounded border border-green-500 bg-green-100 text-green-800" type = "submit"> Save </button>
     </form>
 @endsection

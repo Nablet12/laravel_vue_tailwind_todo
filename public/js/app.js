@@ -1853,7 +1853,80 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      projects: []
+    };
+  },
+  created: function created() {
+    this.getProjects();
+  },
+  methods: {
+    getProjects: function getProjects() {
+      var _this = this;
+
+      axios.get('http://laravelvuetailwindtodo.test/api/project').then(function (response) {
+        _this.projects = response.data;
+      })["catch"](function (response) {
+        console.log(response);
+        alert('Error');
+      });
+    },
+    deleteProject: function deleteProject(projectKey) {
+      var _this2 = this;
+
+      axios["delete"]('http://laravelvuetailwindtodo.test/api/project/' + this.projects[projectKey].id).then(function (response) {
+        alert('Project Deleted!');
+
+        _this2.projects.splice(projectKey, 1);
+      })["catch"](function (response) {
+        console.log(response);
+        alert('Error');
+      });
+    },
+    createProject: function createProject() {
+      var _this3 = this;
+
+      var project = prompt('Write Your Project');
+      axios.post('http://laravelvuetailwindtodo.test/api/project', {
+        title: project
+      }).then(function (response) {
+        alert('Project Saved!');
+
+        _this3.projects.push(response.data.project);
+      })["catch"](function (response) {
+        console.log(response);
+        alert('Error');
+      });
+    },
+    editProject: function editProject() {
+      var _this4 = this;
+
+      var projectDB = this.projects[projectKey];
+      var project = prompt('Write Your Project', projectDB.title);
+      axios.put('http://laravelvuetailwindtodo.test/api/project/' + projectDB.id, {
+        title: project
+      }).then(function (response) {
+        alert('Project Saved!');
+        _this4.projects[projectKey].title = project;
+      })["catch"](function (response) {
+        console.log(response);
+        alert('Error');
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -19422,16 +19495,65 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h3", [_vm._v("\r\n        Projects\r\n    ")]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.createProject()
+          }
+        }
+      },
+      [_vm._v("Create Project")]
+    ),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.projects, function(project, projectKey) {
+        return _c(
+          "li",
+          {
+            key: projectKey,
+            staticClass: "border-blue-800 border-l-4 bg-blue-100 px-2"
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "text-red-400",
+                on: {
+                  click: function($event) {
+                    return _vm.deleteProject(projectKey)
+                  }
+                }
+              },
+              [_vm._v("X")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "text-red-400",
+                on: {
+                  click: function($event) {
+                    return _vm.editProject(projectKey)
+                  }
+                }
+              },
+              [_vm._v("E")]
+            ),
+            _vm._v("\r\n            " + _vm._s(project.title) + "\r\n        ")
+          ]
+        )
+      }),
+      0
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h3", [_vm._v("\r\n        Projects\r\n    ")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
