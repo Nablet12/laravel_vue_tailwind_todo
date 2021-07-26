@@ -1,4 +1,7 @@
-<a href="/note/create">New Note</a>
+@extends('layout')
+
+@section('content')
+<a href="/note/create" class = "mb-2 py-1.5 px-3 rounded border border-gray-500 bg-gray-100 text-gray-800">New Note</a>
 <table>
     <thead>
         <tr>
@@ -6,19 +9,7 @@
                 ID
             </th>
             <th>
-                Title
-            </th>
-            <th>
                 Content
-            </th>
-            <th>
-                Important
-            </th>
-            <th>
-                Created at
-            </th>
-            <th>
-                Updated at
             </th>
         </tr>
     </thead>
@@ -28,31 +19,20 @@
             <td>
                 {{ $note -> id }}
             </td>
-            <td>
-                {{ $note -> title }}
-            </td>
-            <td>
+            <td class = "w-4/5 text-center">
                 {{ $note -> content }}
             </td>
             <td>
-                {{ $note -> important }}
-            </td>
-            <td>
-                {{ $note -> created_at }}
-            </td>
-            <td>
-                {{ $note -> updated_at }}
-            </td>
-            <td>
-                <a href="/note/{{ $note->id }}">Show</a>
-                <a href="/note/{{ $note->id }}/edit">Edit</a>
+                <a class = "p-1 m-1 rounded border border-green-500 bg-green-100 text-green-800" href="/note/{{ $note->id }}">Show</a>
+                <a class = "p-1 m-1 rounded border border-blue-500 bg-blue-100 text-blue-800" href="/note/{{ $note->id }}/edit">Edit</a>
                 <form method="POST" action="note/{{ $note->id }}">
                 @csrf
                 @method('DELETE')
-                <button type = "submit">Delete</button>
+                <button type = "submit" class = "p-1 m-1 rounded border border-red-500 bg-red-100 text-red-800">Delete</button>
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+@endsection

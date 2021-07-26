@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNote extends Migration
+class CreateReminderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateNote extends Migration
      */
     public function up()
     {
-        Schema::create('note', function (Blueprint $table) {
+        Schema::create('reminder', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
+            $table->string('title');
+            $table->date('date');
+            $table->time('time');
+            //$table->enum('important', ['Yes', 'No']);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +30,6 @@ class CreateNote extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('note');
+        Schema::dropIfExists('reminder');
     }
 }
