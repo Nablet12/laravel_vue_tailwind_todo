@@ -27,3 +27,13 @@ Route::get('task',[\App\Http\Controllers\api\TaskController::class, 'index']);
 Route::post('task',[\App\Http\Controllers\api\TaskController::class, 'store']);
 Route::put('task/{id}',[\App\Http\Controllers\api\TaskController::class, 'update']);
 Route::delete('task/{id}',[\App\Http\Controllers\api\TaskController::class, 'delete']);
+
+Route::get('note',[\App\Http\Controllers\api\NoteController::class, 'index']);
+Route::post('note',[\App\Http\Controllers\api\NoteController::class, 'store']);
+Route::put('note/{id}',[\App\Http\Controllers\api\NoteController::class, 'update']);
+Route::delete('note/{id}',[\App\Http\Controllers\api\NoteController::class, 'delete']);
+
+Route::get('quote',[\App\Http\Controllers\api\QuoteController::class, 'index']);
+Route::post('quote',[\App\Http\Controllers\api\QuoteController::class, 'store']);
+Route::put('quote/{id}',[\App\Http\Controllers\api\QuoteController::class, 'update']);
+Route::delete('quote/{id}',[\App\Http\Controllers\api\QuoteController::class, 'delete']);
